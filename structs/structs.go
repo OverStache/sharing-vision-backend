@@ -2,9 +2,10 @@ package structs
 
 // Users is a representation of a post
 type Users struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Age  int    `json:"age"`
+	ID       int    `json:"id"`
+	Name     string `json:"name"`
+	Age      int    `json:"age"`
+	Password string `json:"password"`
 }
 
 type Risk_profiles struct {
@@ -13,6 +14,11 @@ type Risk_profiles struct {
 	MM      float32 `json:"MM"`
 	Bond    float32 `json:"Bond"`
 	Stock   float32 `json:"Stock"`
+}
+
+type Login struct {
+	Name     string `json:"name"`
+	Password string `json:"password"`
 }
 
 // Result is an array of post
