@@ -14,7 +14,7 @@ var (
 )
 
 func Connect() {
-	DB, Err = gorm.Open("mysql", "root:root@/db_nasabah?charset=utf8&parseTime=True")
+	DB, Err = gorm.Open("mysql", "root:root@/article?charset=utf8&parseTime=True")
 
 	if Err != nil {
 		log.Println("Connection failed", Err)
@@ -22,6 +22,5 @@ func Connect() {
 		log.Println("Server up and running")
 	}
 
-	DB.AutoMigrate(&structs.Users{})
-	DB.AutoMigrate(&structs.Risk_profiles{})
+	DB.AutoMigrate(&structs.Posts{})
 }

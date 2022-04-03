@@ -1,24 +1,22 @@
 package structs
 
-// Users is a representation of a post
-type Users struct {
-	ID       int    `json:"id"`
-	Name     string `json:"name"`
-	Age      int    `json:"age"`
-	Password string `json:"password"`
+import "time"
+
+type Posts struct {
+	Id        int    `json:"id"`
+	Title     string `json:"title"`
+	Content   string `json:"content"`
+	Category  string `json:"category"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Status    string `json:"status"`
 }
 
-type Risk_profiles struct {
-	ID      int     `json:"id"`
-	Id_user int     `json:"id_user"`
-	MM      float32 `json:"MM"`
-	Bond    float32 `json:"Bond"`
-	Stock   float32 `json:"Stock"`
-}
-
-type Login struct {
-	Name     string `json:"name"`
-	Password string `json:"password"`
+type Request struct {
+	Title    string `json:"title"`
+	Content  string `json:"content"`
+	Category string `json:"category"`
+	Status   string `json:"status"`
 }
 
 // Result is an array of post

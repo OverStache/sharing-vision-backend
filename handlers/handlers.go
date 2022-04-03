@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 func HandleReq() {
@@ -13,10 +14,12 @@ func HandleReq() {
 	myRouter := mux.NewRouter().StrictSlash(true)
 
 	myRouter.HandleFunc("/", HomePage)
-	myRouter.HandleFunc("/login", Login).Methods("OPTIONS", "POST")
-	myRouter.HandleFunc("/user", Create).Methods("OPTIONS", "POST")
-	myRouter.HandleFunc("/users", GetUsers).Methods("OPTIONS", "GET")
-	myRouter.HandleFunc("/user/{id}", GetUser).Methods("OPTIONS", "GET")
+	myRouter.HandleFunc("/article", CreateArticle).Methods("OPTIONS", "POST")
+	myRouter.HandleFunc("/article/{limit}/{offset}", GetArticles).Methods("OPTIONS", "GET")
+	myRouter.HandleFunc("/article/{id}", GetArticle).Methods("OPTIONS", "GET")
+	myRouter.HandleFunc("/article/{id}", UpdateArticle).Methods("OPTIONS", "PUT")
+	myRouter.HandleFunc("/article/{id}", DeleteArticle).Methods("OPTIONS", "DELETE")
 
-	log.Fatal(http.ListenAndServe(":8000", myRouter))
+	handler := cors.AllowAll().Handler(myRouter)
+	log.Fatal(http.ListenAndServe(":8000", handler))
 }
